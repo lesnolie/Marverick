@@ -18,7 +18,7 @@ excerpt:
 
 ## 什么是 Fail2ban？
 
-Fail2ban 是一个开源工具，通过监视应用程序日志并使用正则表达式匹配，将多次登录失败的 IP 地址通过 iptables 规则进行封禁，用于防止暴力破解攻击，适合保护 Bitwarden 等密码管理器。[web:1]
+Fail2ban 是一个开源工具，通过监视应用程序日志并使用正则表达式匹配，将多次登录失败的 IP 地址通过 iptables 规则进行封禁，用于防止暴力破解攻击，适合保护 Bitwarden 等密码管理器。
 
 ## 安装 Fail2ban
 
@@ -31,7 +31,7 @@ apt install fail2ban
 
 ## 配置前的准备
 
-在配置 Fail2ban 之前，确保服务的 `TZ`（时区）和 `IP_HEADER`（IP 头部）环境变量设置正确，以保证日志时间戳准确且记录真实访问 IP。[web:1]
+在配置 Fail2ban 之前，确保服务的 `TZ`（时区）和 `IP_HEADER`（IP 头部）环境变量设置正确，以保证日志时间戳准确且记录真实访问 IP。
 
 ## 创建过滤器
 
@@ -45,9 +45,9 @@ before = common.conf
 failregex = ^.*Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$
 ignoreregex =
 ```
-[web:1]
 
-该过滤器用于匹配 Bitwarden 日志中的失败登录尝试。[web:1]
+
+该过滤器用于匹配 Bitwarden 日志中的失败登录尝试。
 
 ## 创建 Jail
 
@@ -67,7 +67,7 @@ findtime  = 14400
 ```
 
 
-如果实际监听端口不是 80 和 443，请相应修改 `port`，否则封禁规则不会作用在真实服务端口上。[web:1]
+如果实际监听端口不是 80 和 443，请相应修改 `port`，否则封禁规则不会作用在真实服务端口上。
 
 ## 重启 Fail2ban
 
@@ -85,7 +85,7 @@ fail2ban-client status bitwarden
 ```
 
 
-当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。[web:1]
+当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。
 
 ## 解封 IP
 
