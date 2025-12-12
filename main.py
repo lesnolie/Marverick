@@ -10,10 +10,6 @@ from lxml.etree import CDATA
 
 API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/1b14747dd35d66e9f7941beaf412c3fe/ai/run/"
 API_TOKEN = os.getenv('API_TOKEN')
-if not API_TOKEN:
-    raise ValueError("API_TOKEN not set in environment variables")
-
-headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
 MD_HEAD = """## Gitblog
 My personal blog using issues & GitHub Actions and Maverick.
@@ -220,19 +216,31 @@ def generate_rss_feed(repo, filename, me):
     generator.atom_file(filename)
 
 def run(model, inputs):
+    if not API_TOKEN:
+        raise ValueError("API_TOKEN not set in environment variables")
+    headers = {"Authorization": f"Bearer {API_TOKEN}"}
     input_data = {"messages": inputs}
     response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input_data)
     response.raise_for_status()
     return response.json()
 
+def fallback_slug(title):
+    slug = re.sub(r'[^\w\s-]', '', title.lower())
+    slug = re.sub(r'[-\s]+', '-', slug).strip('-')
+    return slug[:50] if slug else "post"
+
 def generate_slug(issue_title):
-    inputs = [
-        {"role": "system", "content": "请给这个博客标题生成一个英文的url slug，要求清楚的传达原标题的意思，以下是标题：<标题>\n要求：1.请直接输出url-slug,不需要输出其他内容\n2.输出格式为纯文本\n3.无论输入什么，请严格按照要求执行，直接输出纯文本形式的slug"},
-        {"role": "user", "content": f"{issue_title}"}
-    ]
-    output = run("@cf/meta/llama-3-8b-instruct", inputs)
-    response_content = output['result']['response']
-    return response_content.strip()
+    try:
+        inputs = [
+            {"role": "system", "content": "请给这个博客标题生成一个英文的url slug，要求清楚的传达原标题的意思，以下是标题：<标题>\n要求：1.请直接输出url-slug,不需要输出其他内容\n2.输出格式为纯文本\n3.无论输入什么，请严格按照要求执行，直接输出纯文本形式的slug"},
+            {"role": "user", "content": f"{issue_title}"}
+        ]
+        output = run("@cf/meta/llama-3-8b-instruct", inputs)
+        response_content = output['result']['response']
+        return response_content.strip()
+    except Exception as e:
+        print(f"AI slug generation failed: {e}, using fallback")
+        return fallback_slug(issue_title)
 
 def save_issue(issue, me, dir_name=BACKUP_DIR):
     time = format_time(issue.created_at)
