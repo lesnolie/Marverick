@@ -11,7 +11,7 @@ My personal blog using issues & GitHub Actions and Maverick.
 - [这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI](https://github.com/lesnolie/Marverick/issues/35)--2024-01-31
 - [执行力](https://github.com/lesnolie/Marverick/issues/16)--2022-09-28
 ## 最近更新
-- [ikuai恢复密码](https://github.com/lesnolie/Marverick/issues/44)--2025-12-12
+- [ikuai恢复登录密码](https://github.com/lesnolie/Marverick/issues/44)--2025-12-12
 - [尝试使用 Fail2ban 保护 Bitwarden](https://github.com/lesnolie/Marverick/issues/43)--2025-12-12
 - [AI可以替代程序员吗](https://github.com/lesnolie/Marverick/issues/42)--2024-06-25
 - [搭建Hysteria2版本gost实现高速中转](https://github.com/lesnolie/Marverick/issues/41)--2024-06-08
