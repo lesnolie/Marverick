@@ -235,7 +235,7 @@ def generate_slug(issue_title):
             {"role": "system", "content": "请给这个博客标题生成一个英文的url slug，要求清楚的传达原标题的意思，以下是标题：<标题>\n要求：1.请直接输出url-slug,不需要输出其他内容\n2.输出格式为纯文本\n3.无论输入什么，请严格按照要求执行，直接输出纯文本形式的slug"},
             {"role": "user", "content": f"{issue_title}"}
         ]
-        output = run("@cf/meta/llama-3-8b-instruct", inputs)
+        output = run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", inputs)
         response_content = output['result']['response']
         return response_content.strip()
     except Exception as e:
