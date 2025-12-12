@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/9e528a6143d9e8911cd98ac2a57559f0.json"
+            api: "/b17611d5c1d4f65884f83791e49d007d.json"
         }
     </script>
    
@@ -144,7 +144,6 @@
 <p>在 Debian/Ubuntu 系统上：</p>
 
 <pre><code>apt install fail2ban</code></pre>
-<p>[web:1]</p>
 <h2>配置前的准备</h2>
 <p>在配置 Fail2ban 之前，确保服务的 <code>TZ</code>（时区）和 <code>IP_HEADER</code>（IP 头部）环境变量设置正确，以保证日志时间戳准确且记录真实访问 IP。[web:1]</p>
 <h2>创建过滤器</h2>
@@ -171,17 +170,14 @@ logpath   = /root/bitwarden-data/bitwarden.log
 maxretry  = 3
 bantime   = 14400
 findtime  = 14400</code></pre>
-<p>[web:1]</p>
 <p>如果实际监听端口不是 80 和 443，请相应修改 <code>port</code>，否则封禁规则不会作用在真实服务端口上。[web:1]</p>
 <h2>重启 Fail2ban</h2>
 
 <pre><code>systemctl restart fail2ban</code></pre>
-<p>[web:1]</p>
 <h2>测试配置</h2>
 <p>故意输入错误密码，然后查看 Jail 状态中记录数是否增加：</p>
 
 <pre><code>fail2ban-client status bitwarden</code></pre>
-<p>[web:1]</p>
 <p>当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。[web:1]</p>
 <h2>解封 IP</h2>
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 16:10:58 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 16:10:58 +0806</pubDate><item><title>记第一次搭建软路由（旁路由）</title><link>/archives/first-time-setup-homelab-router/</link><description>&lt;p&gt;于是，我终于搭建了属于自己的路由器。&lt;br&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 16:11:57 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 16:11:57 +0806</pubDate><item><title>记第一次搭建软路由（旁路由）</title><link>/archives/first-time-setup-homelab-router/</link><description>&lt;p&gt;于是，我终于搭建了属于自己的路由器。&lt;br&gt;
 于是，我终于人到中年。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;早就想要折腾路由器了，从开始折腾梅林算起，到如今已经有十多年了。其中，因自身的原因有个3，4年空窗期，但是自己对于折腾的喜爱还是停不下来。&lt;br&gt;
@@ -583,7 +583,6 @@ git -c core.symlinks=true checkout .&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在 Debian/Ubuntu 系统上：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;apt install fail2ban&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;[web:1]&lt;/p&gt;
 &lt;h2&gt;配置前的准备&lt;/h2&gt;
 &lt;p&gt;在配置 Fail2ban 之前，确保服务的 &lt;code&gt;TZ&lt;/code&gt;（时区）和 &lt;code&gt;IP_HEADER&lt;/code&gt;（IP 头部）环境变量设置正确，以保证日志时间戳准确且记录真实访问 IP。[web:1]&lt;/p&gt;
 &lt;h2&gt;创建过滤器&lt;/h2&gt;
@@ -610,17 +609,14 @@ logpath   = /root/bitwarden-data/bitwarden.log
 maxretry  = 3
 bantime   = 14400
 findtime  = 14400&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;[web:1]&lt;/p&gt;
 &lt;p&gt;如果实际监听端口不是 80 和 443，请相应修改 &lt;code&gt;port&lt;/code&gt;，否则封禁规则不会作用在真实服务端口上。[web:1]&lt;/p&gt;
 &lt;h2&gt;重启 Fail2ban&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;systemctl restart fail2ban&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;[web:1]&lt;/p&gt;
 &lt;h2&gt;测试配置&lt;/h2&gt;
 &lt;p&gt;故意输入错误密码，然后查看 Jail 状态中记录数是否增加：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;fail2ban-client status bitwarden&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;[web:1]&lt;/p&gt;
 &lt;p&gt;当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。[web:1]&lt;/p&gt;
 &lt;h2&gt;解封 IP&lt;/h2&gt;
 
