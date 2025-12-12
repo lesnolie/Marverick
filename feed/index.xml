@@ -1,24 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 16:12:43 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 16:12:43 +0806</pubDate><item><title>记第一次搭建软路由（旁路由）</title><link>/archives/first-time-setup-homelab-router/</link><description>&lt;p&gt;于是，我终于搭建了属于自己的路由器。&lt;br&gt;
-于是，我终于人到中年。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;早就想要折腾路由器了，从开始折腾梅林算起，到如今已经有十多年了。其中，因自身的原因有个3，4年空窗期，但是自己对于折腾的喜爱还是停不下来。&lt;br&gt;
-先来介绍硬件：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;NUC 12 华尔街峡谷&lt;/li&gt;
-&lt;li&gt;32G内存条&lt;/li&gt;
-&lt;li&gt;520G硬盘，nvme.m2协议
-嗯，我将其设置成了旁路由。一方面是这台路由器只有一个网口，另一方面是我觉得旁路由才是居家的最终形态。   &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;使用windows11为主系统，然后在hyper-v中虚拟了istoreos。接着设置了路由器端和手机端，果然，无法上网。&lt;br&gt;
-是什么原因呢？在网上找到了这样两篇内容：&lt;br&gt;
-&lt;a href="https://www.right.com.cn/forum/thread-5512947-1-1.html"&gt;Openwrt 作为旁路网关（不是旁路由！！）正确配置方法，性能测试 —— 破解迷思&lt;/a&gt;&lt;br&gt;
-&lt;a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;amp;tid=2983767"&gt;【终极指南】关于N1做旁路由添加 iptables 自定义防火墙规则的见解&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;最后我决定，再添加一个wan口，然后将lan口桥接关闭。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/34"&gt;记第一次搭建软路由（旁路由）&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/first-time-setup-homelab-router/</guid><pubDate>Tue, 20 Jun 2023 08:00:00 +0806</pubDate></item><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 16:39:57 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 16:39:57 +0806</pubDate><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
 &lt;h2&gt;什么是背景去除工具&lt;/h2&gt;
 &lt;p&gt;背景去除工具，简单讲就是抠图。我个人常用场景是：网图只想使用其中的某个元素，之前只能通过PS一点一点抠图，为此还学了很多方法：什么蒙板、钢笔等等等等。现在，得益于AI的发展迅速，迭代了许许多多的抠图工具，今天我就要介绍一款我所使用过的最好用的工具：&lt;a href="https:pixian.ai"&gt;Pixian.ai&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure style="flex: 100.82256169212691" &gt;&lt;img loading="lazy" width="1716" height="851" src="https://github.com/lesnolie/Marverick/assets/81410185/44241a36-6ffe-4610-8e50-772fdba10b48" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -570,7 +551,53 @@ git -c core.symlinks=true checkout .&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;/root/gost_hy/gost/gost -L=quic://:port?send_mbps=100 -F socks5://156.xxxx:port&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;通过以上配置，能够实现高速稳定的中转，解决某些节点无法访问的问题，同时利用Hysteria-QUIC的大幅提升传输速度。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/41"&gt;搭建Hysteria2版本gost实现高速中转&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/build-hysteria2-gost-high-speed-proxy/</guid><pubDate>Sat, 08 Jun 2024 08:00:00 +0806</pubDate></item><item><title>AI可以替代程序员吗</title><link>/archives/ai-can-replace-programmers/</link><description>&lt;p&gt;1.AI无法替代程序员
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/build-hysteria2-gost-high-speed-proxy/</guid><pubDate>Sat, 08 Jun 2024 08:00:00 +0806</pubDate></item><item><title>AI可以替代程序员吗</title><link>/archives/can-ai-replace-programmers/</link><description>&lt;hr&gt;
+&lt;p&gt;title: "AI 可以替代程序员吗？"
+slug: "can-ai-replace-programmers"
+date: 2025-12-13
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AI&lt;/li&gt;
+&lt;li&gt;编程&lt;/li&gt;
+&lt;li&gt;效率工具&lt;/li&gt;
+&lt;li&gt;职业思考&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;1. AI 无法真正替代程序员&lt;/h2&gt;
+&lt;p&gt;每次看到「AI 要不要替代程序员」这类话题，最容易被忽略的一点是：&lt;strong&gt;程序员的工作从来不只是写代码&lt;/strong&gt;。[web:17]&lt;br&gt;
+理解业务、拆解需求、权衡取舍、保证系统在复杂环境下长期稳定运行，这些都不是几段生成的代码可以解决的事，而是大量上下文和长期负责带来的结果。[web:7]&lt;/p&gt;
+&lt;p&gt;当问题足够复杂时，真正困难的往往不是「怎么实现」，而是「应该实现什么」和「有什么坑」。目前的大模型在这两件事上都离「独立负责一个严肃项目」差得很远，因此更现实的说法是：&lt;strong&gt;AI 会重塑程序员的工作方式，而不是直接把人替掉&lt;/strong&gt;。[web:11]&lt;/p&gt;
+&lt;h2&gt;2. 对我来说，AI 是我的程序员&lt;/h2&gt;
+&lt;p&gt;站在使用者的角度，其实更贴切的感受是：&lt;strong&gt;AI 成了我的远程程序员&lt;/strong&gt;。[web:12]&lt;br&gt;
+我把需求、想法、遇到的问题，用自然语言描述清楚；AI 负责写代码、写配置、写工作流；我负责决策和审核，像是在管理一个随时待命、从不抱怨、成本接近为零的虚拟开发同事。[web:13]&lt;/p&gt;
+&lt;p&gt;这也改变了「谁算是程序员」这件事。过去，「会写代码」是门槛；现在，只要能把目标讲清楚、愿意动手测试，你就已经在做很多「程序员在做的事」了，只不过键盘敲代码的人从自己变成了 AI。[web:15]&lt;/p&gt;
+&lt;h2&gt;3. 借助 AI，我能做更多事&lt;/h2&gt;
+&lt;p&gt;有了 AI 之后，有很多原本要「先系统学一遍再动手」的事情，现在可以反过来：&lt;strong&gt;边做边问，边问边改&lt;/strong&gt;。[web:10]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不熟悉的语言或框架，可以直接让 AI 生成示例、解释关键概念，再在此基础上扩展。  &lt;/li&gt;
+&lt;li&gt;不想啃文档时，可以让 AI 根据目标场景生成配置，然后再对照官方文档检查关键参数。  &lt;/li&gt;
+&lt;li&gt;像这次折腾 GitHub Actions、写博客自动构建、写部署脚本，全部可以交给 AI 先给一个版本，再一点点修正到符合自己习惯。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;结果就是：&lt;strong&gt;不会写代码的门槛被拉低了，会用 AI 的门槛变得更重要&lt;/strong&gt;。[web:11]&lt;/p&gt;
+&lt;h2&gt;4. 连这篇文章，也离不开 AI&lt;/h2&gt;
+&lt;p&gt;这篇文章从标题到结构，其实都离不开 AI 的参与：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;slug 可以让 AI 帮忙生成一个简单、统一风格的英文版本；[web:13]  &lt;/li&gt;
+&lt;li&gt;把自己原始的几点想法丢给 AI，让它帮忙扩展成完整的小节，再根据自己的语气和经历做修改；  &lt;/li&gt;
+&lt;li&gt;写完之后，让 AI 帮忙检查逻辑是否自洽、有没有明显表述不清的地方。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;与其说这是「我写的博客」，不如说是「我和我的 AI 程序员一起完成的博客」——甚至未来完全可以把和 AI 的对话整理出来，变成一篇访谈式的文章。[web:12]&lt;/p&gt;
+&lt;h2&gt;5. 结语：职业不会消失，角色在变化&lt;/h2&gt;
+&lt;p&gt;如果非要一句话总结：&lt;strong&gt;AI 不会让程序员这个职业瞬间消失，但会重塑谁能参与软件创造，以及怎么参与&lt;/strong&gt;。[web:7]&lt;br&gt;
+对专业程序员来说，谁更会用 AI，谁就更像是拿到了新一代生产工具；对非程序员来说，AI 则像是一扇新门，让更多人可以用软件解决问题，而不是先去学习一整套技术栈。[web:11]&lt;/p&gt;
+&lt;p&gt;在这个过程中，「我」是什么身份也在变化：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从「不会写代码所以做不到」变成「不会写代码但可以让 AI 来帮我做到」；  &lt;/li&gt;
+&lt;li&gt;从「被技术门槛挡在门外」变成「可以和 AI 程序员一起工作的人」。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;于是最开始那个问题就变成了另一种问法：&lt;strong&gt;与其担心 AI 会不会替代程序员，不如想想：在有了 AI 之后，你愿意成为哪一种「新角色」？&lt;/strong&gt;[web:9]&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/42"&gt;AI可以替代程序员吗&lt;/a&gt;&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/can-ai-replace-programmers/</guid><pubDate>Tue, 25 Jun 2024 08:00:00 +0806</pubDate></item><item><title>AI可以替代程序员吗</title><link>/archives/ai-can-replace-programmers/</link><description>&lt;p&gt;1.AI无法替代程序员
 2.对我来说，AI是我的程序员
 3.我可以利用AI做许许多多的事情
 4.这篇文章的slug是用AI写的
