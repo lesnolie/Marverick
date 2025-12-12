@@ -229,15 +229,28 @@ def fallback_slug(title):
     slug = re.sub(r'[-\s]+', '-', slug).strip('-')
     return slug[:50] if slug else "post"
 
+def extract_slug_from_response(response):
+    """Extract slug from AI response, removing think tags and cleaning up"""
+    if '</think>' in response:
+        response = response.split('</think>')[-1]
+    slug = response.strip()
+    slug = re.sub(r'[^\w\s-]', '', slug)
+    slug = re.sub(r'[-\s]+', '-', slug).strip('-').lower()
+    return slug[:80] if slug else None
+
 def generate_slug(issue_title):
     try:
         inputs = [
-            {"role": "system", "content": "请给这个博客标题生成一个英文的url slug，要求清楚的传达原标题的意思，以下是标题：<标题>\n要求：1.请直接输出url-slug,不需要输出其他内容\n2.输出格式为纯文本\n3.无论输入什么，请严格按照要求执行，直接输出纯文本形式的slug"},
+            {"role": "system", "content": "Generate a short English URL slug for this blog title. Output ONLY the slug, nothing else. Use lowercase letters and hyphens only. Max 50 characters."},
             {"role": "user", "content": f"{issue_title}"}
         ]
         output = run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", inputs)
         response_content = output['result']['response']
-        return response_content.strip()
+        slug = extract_slug_from_response(response_content)
+        if slug:
+            return slug
+        print("AI returned empty slug, using fallback")
+        return fallback_slug(issue_title)
     except Exception as e:
         print(f"AI slug generation failed: {e}, using fallback")
         return fallback_slug(issue_title)
@@ -251,21 +264,112 @@ def find_existing_file(issue_number, dir_name):
             return os.path.join(dir_name, filename), slug
     return None, None
 
+def parse_existing_frontmatter(filepath):
+    """Parse frontmatter from existing markdown file"""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+        r = re.compile(r'---([\s\S]*?)---')
+        m = r.match(content)
+        if m:
+            import yaml
+            return yaml.safe_load(m.group(1))
+    except Exception as e:
+        print(f"Error parsing frontmatter: {e}")
+    return None
+
+def generate_metadata(title, body):
+    """Use AI to generate categories, tags, and excerpt"""
+    try:
+        content_preview = body[:2000] if len(body) > 2000 else body
+        inputs = [
+            {"role": "system", "content": """Analyze this blog post and return JSON with:
+- categories: array of 1-2 category names (e.g., ["技术教程"], ["生活随笔"])
+- tags: array of 3-5 relevant tags in Chinese
+- excerpt: a 50-100 character Chinese summary
+
+Output ONLY valid JSON, no other text. Example:
+{"categories":["技术教程"],"tags":["网络","路由器"],"excerpt":"本文介绍..."}"""},
+            {"role": "user", "content": f"标题：{title}\n\n内容：{content_preview}"}
+        ]
+        output = run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", inputs)
+        response = output['result']['response']
+        if '</think>' in response:
+            response = response.split('</think>')[-1]
+        response = response.strip()
+        if response.startswith('```'):
+            response = re.sub(r'^```\w*\n?', '', response)
+            response = re.sub(r'\n?```$', '', response)
+        import json
+        metadata = json.loads(response)
+        return {
+            'categories': metadata.get('categories', ['未分类']),
+            'tags': metadata.get('tags', []),
+            'excerpt': metadata.get('excerpt', '')
+        }
+    except Exception as e:
+        print(f"AI metadata generation failed: {e}")
+        return {'categories': ['未分类'], 'tags': [], 'excerpt': ''}
+
+def format_frontmatter(title, slug, date, categories, tags, excerpt):
+    """Format frontmatter as YAML string"""
+    cat_str = '\n'.join(f"  - {c}" for c in categories) if categories else '  - 未分类'
+    tag_str = '\n'.join(f"  - {t}" for t in tags) if tags else '  - 未标记'
+    return f"""---
+layout: post
+title: {title}
+slug: {slug}
+date: {date} 08:00
+status: publish
+author: Leslie
+categories:
+{cat_str}
+tags:
+{tag_str}
+excerpt: {excerpt}
+---
+
+"""
+
 def save_issue(issue, me, dir_name=BACKUP_DIR):
     time = format_time(issue.created_at)
     existing_file, existing_slug = find_existing_file(issue.number, dir_name)
-    if existing_slug:
-        slug = existing_slug
-        print(f"Reusing existing slug: {slug}")
-        if existing_file:
-            os.remove(existing_file)
+    
+    if existing_file and existing_slug:
+        print(f"Updating existing article: {existing_slug}")
+        frontmatter = parse_existing_frontmatter(existing_file)
+        if frontmatter:
+            slug = existing_slug
+            categories = frontmatter.get('categories', ['未分类'])
+            tags = frontmatter.get('tags', [])
+            excerpt = frontmatter.get('excerpt', '')
+            original_date = frontmatter.get('date', f"{time} 08:00")
+            if isinstance(original_date, str):
+                date_str = original_date.split(' ')[0] if ' ' in original_date else original_date
+            else:
+                date_str = str(original_date)[:10]
+        else:
+            slug = existing_slug
+            categories, tags, excerpt = ['未分类'], [], ''
+            date_str = time
     else:
+        print(f"Creating new article for issue #{issue.number}")
         slug = generate_slug(issue.title)
-        print(f"Generated new slug: {slug}")
+        print(f"Generated slug: {slug}")
+        metadata = generate_metadata(issue.title, issue.body or '')
+        categories = metadata['categories']
+        tags = metadata['tags']
+        excerpt = metadata['excerpt']
+        date_str = time
+        print(f"Generated metadata - categories: {categories}, tags: {tags}")
+    
+    if existing_file and os.path.exists(existing_file):
+        os.remove(existing_file)
+    
     md_name = os.path.join(dir_name, f"{issue.number}_{slug}.md")
     with open(md_name, "w", encoding="utf-8") as f:
-        f.write(f"---\nlayout: post\ntitle: {issue.title}\nslug: {slug}\ndate: {time} 08:00\nstatus: publish\nauthor: Leslie\ncategories: \n  - stand \ntags:\n  - stand \n  - stand \nexcerpt: \n---\n\n")
-        f.write(issue.body)
+        f.write(format_frontmatter(issue.title, slug, date_str, categories, tags, excerpt))
+        f.write(issue.body or '')
         if issue.comments:
             for c in issue.get_comments():
                 if is_me(c, me):
