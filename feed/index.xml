@@ -1,12 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Tue, 25 Jun 2024 09:31:51 +0806</lastBuildDate><pubDate>Tue, 25 Jun 2024 09:31:51 +0806</pubDate><item><title>ai画图不属于我</title><link>/archives/ai-drawing-not-my-thing/</link><description>&lt;p&gt;这两天开通了midjounery和leondor.ai，画出来的图简直一个比一个丑。&lt;br&gt;
-用prompt，用同一个模型，参数，做出来的图就是比别人丑。&lt;br&gt;
-用image2image，出来的图简直不是人。&lt;br&gt;
-不得不说midjounery可玩性还是非常强的，也非常的已用，但是他只能输出他自己已经理解的东西，无法输出他不理解的东西。比如我让她画珍珠手机吊绳，它输出的全是珍珠项链。&lt;br&gt;
-打开推特，看到了一句话:你永远无法赚到你认知以外的钱，换句话说，你永远无法让ai输出你认知以外的东西。&lt;br&gt;
-嗯，ai亦然，它也无法输出它理解不了的东西。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/33"&gt;ai画图不属于我 &lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ai-drawing-not-my-thing/</guid><pubDate>Thu, 23 Mar 2023 08:00:00 +0806</pubDate></item><item><title>记第一次搭建软路由（旁路由）</title><link>/archives/first-time-setup-homelab-router/</link><description>&lt;p&gt;于是，我终于搭建了属于自己的路由器。&lt;br&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 16:10:58 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 16:10:58 +0806</pubDate><item><title>记第一次搭建软路由（旁路由）</title><link>/archives/first-time-setup-homelab-router/</link><description>&lt;p&gt;于是，我终于搭建了属于自己的路由器。&lt;br&gt;
 于是，我终于人到中年。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;早就想要折腾路由器了，从开始折腾梅林算起，到如今已经有十多年了。其中，因自身的原因有个3，4年空窗期，但是自己对于折腾的喜爱还是停不下来。&lt;br&gt;
@@ -25,20 +18,7 @@
 &lt;p&gt;最后我决定，再添加一个wan口，然后将lan口桥接关闭。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/34"&gt;记第一次搭建软路由（旁路由）&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/first-time-setup-homelab-router/</guid><pubDate>Tue, 20 Jun 2023 08:00:00 +0806</pubDate></item><item><title>tools篇二：一款图片高清修复工具</title><link>/archives/high-definition-image-restoration-tool/</link><description>&lt;p&gt;很快，我们就来到了第二篇：图片高清放大工具——&lt;a href="https://replicate.com/jingyunliang/swinir"&gt;swinir&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;这是一个开源的图片高清修复工具，你可以在它的主页找到github仓库地址。&lt;br&gt;
-打开的是一个ONLINE的网站，但是这个网站在使用的过程中，经常会遇到内存不足的问题，所以需要自己亲手去&lt;a href="https://colab.research.google.com/gist/JingyunLiang/a5e3e54bc9ef8d7bf594f6fee8208533/swinir-demo-on-real-world-image-sr.ipynb"&gt;google cloab&lt;/a&gt;设置。&lt;/p&gt;
-&lt;p&gt;按照顺序一路下行，在第二点将第二点的&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;test_patch_wise = FALSE
-```&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;改为true&lt;/p&gt;
-&lt;p&gt;&lt;figure style="flex: 162.64150943396226" &gt;&lt;img loading="lazy" width="1724" height="530" src="https://github.com/lesnolie/Marverick/assets/81410185/3033d1c4-6bb1-4187-8ffd-43a1c4488c71" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;最后下载即可。&lt;br&gt;
-修复效果十分惊人，请自行尝试。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/36"&gt;tools篇二：一款图片高清修复工具&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/high-definition-image-restoration-tool/</guid><pubDate>Wed, 31 Jan 2024 08:00:00 +0806</pubDate></item><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/first-time-setup-homelab-router/</guid><pubDate>Tue, 20 Jun 2023 08:00:00 +0806</pubDate></item><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
 &lt;h2&gt;什么是背景去除工具&lt;/h2&gt;
 &lt;p&gt;背景去除工具，简单讲就是抠图。我个人常用场景是：网图只想使用其中的某个元素，之前只能通过PS一点一点抠图，为此还学了很多方法：什么蒙板、钢笔等等等等。现在，得益于AI的发展迅速，迭代了许许多多的抠图工具，今天我就要介绍一款我所使用过的最好用的工具：&lt;a href="https:pixian.ai"&gt;Pixian.ai&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure style="flex: 100.82256169212691" &gt;&lt;img loading="lazy" width="1716" height="851" src="https://github.com/lesnolie/Marverick/assets/81410185/44241a36-6ffe-4610-8e50-772fdba10b48" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -55,7 +35,20 @@
 &lt;p&gt;有尺寸限制，需要你自行进行探索&lt;/p&gt;
 &lt;p&gt;-end-&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/35"&gt;这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/best-background-removal-tool-pixian-ai/</guid><pubDate>Wed, 31 Jan 2024 08:00:00 +0806</pubDate></item><item><title>Hyper-V下PaoPaoDns&amp;&amp;PaoPaoGateway配置教程</title><link>/archives/hyper-v-paopao-dns-gateway-setup-guide/</link><description>&lt;p&gt;为什么我喜欢捣鼓网络呢？一则网络确实是日常所需，最常接触；二是我能接触到的网络技术也确实简单：理解了网络拓扑，流量走向，安装相应的软件，网上还都有教程；三则事后反馈也是即时的，成就感颇高。&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/best-background-removal-tool-pixian-ai/</guid><pubDate>Wed, 31 Jan 2024 08:00:00 +0806</pubDate></item><item><title>tools篇二：一款图片高清修复工具</title><link>/archives/high-definition-image-restoration-tool/</link><description>&lt;p&gt;很快，我们就来到了第二篇：图片高清放大工具——&lt;a href="https://replicate.com/jingyunliang/swinir"&gt;swinir&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这是一个开源的图片高清修复工具，你可以在它的主页找到github仓库地址。&lt;br&gt;
+打开的是一个ONLINE的网站，但是这个网站在使用的过程中，经常会遇到内存不足的问题，所以需要自己亲手去&lt;a href="https://colab.research.google.com/gist/JingyunLiang/a5e3e54bc9ef8d7bf594f6fee8208533/swinir-demo-on-real-world-image-sr.ipynb"&gt;google cloab&lt;/a&gt;设置。&lt;/p&gt;
+&lt;p&gt;按照顺序一路下行，在第二点将第二点的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;test_patch_wise = FALSE
+```&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;改为true&lt;/p&gt;
+&lt;p&gt;&lt;figure style="flex: 162.64150943396226" &gt;&lt;img loading="lazy" width="1724" height="530" src="https://github.com/lesnolie/Marverick/assets/81410185/3033d1c4-6bb1-4187-8ffd-43a1c4488c71" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最后下载即可。&lt;br&gt;
+修复效果十分惊人，请自行尝试。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/36"&gt;tools篇二：一款图片高清修复工具&lt;/a&gt;&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/high-definition-image-restoration-tool/</guid><pubDate>Wed, 31 Jan 2024 08:00:00 +0806</pubDate></item><item><title>Hyper-V下PaoPaoDns&amp;&amp;PaoPaoGateway配置教程</title><link>/archives/hyper-v-paopao-dns-gateway-setup-guide/</link><description>&lt;p&gt;为什么我喜欢捣鼓网络呢？一则网络确实是日常所需，最常接触；二是我能接触到的网络技术也确实简单：理解了网络拓扑，流量走向，安装相应的软件，网上还都有教程；三则事后反馈也是即时的，成就感颇高。&lt;/p&gt;
 &lt;p&gt;最近觉得openwrt的Homeproxy不好用。我都学会了写sing-box的配置文件，却对Homeproxy束手无策。Onedrive和canva竟然都访问不了，dns还时常出岔子。于是在网上冲浪的过程中邂逅了一篇文章，文章本身介绍利用singbox和mosdns进行分流，mosdns发现国内dns就直接直连，国外dns则通过singbox的fakeip模式进行代理。效果很好，速度很快。本人搭建成功以后，谷歌网盘的下载速度能达到40mb/s。&lt;/p&gt;
 &lt;p&gt;不过我一直记得作者说的一句话：&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;“因为家里只有一台openwrt设备，无法使用PaoPaoDns&amp;amp;&amp;amp;PaoPaoGateway所以才这么做”。&lt;/p&gt;
@@ -583,4 +576,54 @@ git -c core.symlinks=true checkout .&lt;/code&gt;&lt;/pre&gt;
 4.这篇文章的slug是用AI写的
 5.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/42"&gt;AI可以替代程序员吗&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ai-can-replace-programmers/</guid><pubDate>Tue, 25 Jun 2024 08:00:00 +0806</pubDate></item></channel></rss>
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ai-can-replace-programmers/</guid><pubDate>Tue, 25 Jun 2024 08:00:00 +0806</pubDate></item><item><title>尝试使用 Fail2ban 保护 Bitwarden</title><link>/archives/fail2ban-bitwarden-protection/</link><description>&lt;p&gt;原文链接：&lt;a href="https://blog.mrchi.cc/posts/tryout-fail2ban/"&gt;https://blog.mrchi.cc/posts/tryout-fail2ban/&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;什么是 Fail2ban？&lt;/h2&gt;
+&lt;p&gt;Fail2ban 是一个开源工具，通过监视应用程序日志并使用正则表达式匹配，将多次登录失败的 IP 地址通过 iptables 规则进行封禁，用于防止暴力破解攻击，适合保护 Bitwarden 等密码管理器。[web:1]&lt;/p&gt;
+&lt;h2&gt;安装 Fail2ban&lt;/h2&gt;
+&lt;p&gt;在 Debian/Ubuntu 系统上：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt install fail2ban&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[web:1]&lt;/p&gt;
+&lt;h2&gt;配置前的准备&lt;/h2&gt;
+&lt;p&gt;在配置 Fail2ban 之前，确保服务的 &lt;code&gt;TZ&lt;/code&gt;（时区）和 &lt;code&gt;IP_HEADER&lt;/code&gt;（IP 头部）环境变量设置正确，以保证日志时间戳准确且记录真实访问 IP。[web:1]&lt;/p&gt;
+&lt;h2&gt;创建过滤器&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/fail2ban/filter.d&lt;/code&gt; 目录下创建 &lt;code&gt;bitwarden.local&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[INCLUDES]
+before = common.conf
+
+[Definition]
+failregex = ^.*Username or password is incorrect\. Try again\. IP: &amp;lt;ADDR&amp;gt;\. Username:.*$
+ignoreregex =&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[web:1]&lt;/p&gt;
+&lt;p&gt;该过滤器用于匹配 Bitwarden 日志中的失败登录尝试。[web:1]&lt;/p&gt;
+&lt;h2&gt;创建 Jail&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/fail2ban/jail.d&lt;/code&gt; 目录下创建 &lt;code&gt;bitwarden.local&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[bitwarden]
+enabled   = true
+port      = 80,443
+name      = bitwarden
+filter    = bitwarden
+banaction = iptables-multiport
+logpath   = /root/bitwarden-data/bitwarden.log
+maxretry  = 3
+bantime   = 14400
+findtime  = 14400&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[web:1]&lt;/p&gt;
+&lt;p&gt;如果实际监听端口不是 80 和 443，请相应修改 &lt;code&gt;port&lt;/code&gt;，否则封禁规则不会作用在真实服务端口上。[web:1]&lt;/p&gt;
+&lt;h2&gt;重启 Fail2ban&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl restart fail2ban&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[web:1]&lt;/p&gt;
+&lt;h2&gt;测试配置&lt;/h2&gt;
+&lt;p&gt;故意输入错误密码，然后查看 Jail 状态中记录数是否增加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fail2ban-client status bitwarden&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[web:1]&lt;/p&gt;
+&lt;p&gt;当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。[web:1]&lt;/p&gt;
+&lt;h2&gt;解封 IP&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;fail2ban-client set bitwarden unbanip &amp;lt;IP_ADDRESS&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/43"&gt;尝试使用 Fail2ban 保护 Bitwarden&lt;/a&gt;&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/fail2ban-bitwarden-protection/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item></channel></rss>
