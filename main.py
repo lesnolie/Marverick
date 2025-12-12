@@ -242,10 +242,26 @@ def generate_slug(issue_title):
         print(f"AI slug generation failed: {e}, using fallback")
         return fallback_slug(issue_title)
 
+def find_existing_file(issue_number, dir_name):
+    """Find existing file for an issue and return (filepath, slug) or (None, None)"""
+    prefix = f"{issue_number}_"
+    for filename in os.listdir(dir_name):
+        if filename.startswith(prefix) and filename.endswith(".md"):
+            slug = filename[len(prefix):-3]
+            return os.path.join(dir_name, filename), slug
+    return None, None
+
 def save_issue(issue, me, dir_name=BACKUP_DIR):
     time = format_time(issue.created_at)
-    slug = generate_slug(issue.title)
-    print(f"slug: {slug}")
+    existing_file, existing_slug = find_existing_file(issue.number, dir_name)
+    if existing_slug:
+        slug = existing_slug
+        print(f"Reusing existing slug: {slug}")
+        if existing_file:
+            os.remove(existing_file)
+    else:
+        slug = generate_slug(issue.title)
+        print(f"Generated new slug: {slug}")
     md_name = os.path.join(dir_name, f"{issue.number}_{slug}.md")
     with open(md_name, "w", encoding="utf-8") as f:
         f.write(f"---\nlayout: post\ntitle: {issue.title}\nslug: {slug}\ndate: {time} 08:00\nstatus: publish\nauthor: Leslie\ncategories: \n  - stand \ntags:\n  - stand \n  - stand \nexcerpt: \n---\n\n")
