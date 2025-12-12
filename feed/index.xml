@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 17:38:56 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 17:38:56 +0806</pubDate><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 12 Dec 2025 19:55:06 +0806</lastBuildDate><pubDate>Fri, 12 Dec 2025 19:55:06 +0806</pubDate><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
 &lt;h2&gt;什么是背景去除工具&lt;/h2&gt;
 &lt;p&gt;背景去除工具，简单讲就是抠图。我个人常用场景是：网图只想使用其中的某个元素，之前只能通过PS一点一点抠图，为此还学了很多方法：什么蒙板、钢笔等等等等。现在，得益于AI的发展迅速，迭代了许许多多的抠图工具，今天我就要介绍一款我所使用过的最好用的工具：&lt;a href="https:pixian.ai"&gt;Pixian.ai&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure style="flex: 100.82256169212691" &gt;&lt;img loading="lazy" width="1716" height="851" src="https://github.com/lesnolie/Marverick/assets/81410185/44241a36-6ffe-4610-8e50-772fdba10b48" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -634,6 +634,6 @@ findtime  = 14400&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;控制台恢复方法
 连接显示器（VGA/HDMI）和USB键盘到路由器，重启后进入中文控制台，按数字7选择恢复WEB管理密码，默认账号和密码均为admin。​
 若无显示器但有键盘，按Enter键多次后输入7并确认yes，即可恢复。​
-此方法适用于G系列机架网关和支持外接显示器的型号，保留原有配置。​&lt;/p&gt;
+此方法适用于G系列机架网关和支持外接显示器的型号，保留原有配置。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/44"&gt;ikuai恢复密码&lt;/a&gt;&lt;/p&gt;
 </description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/think-okay-so-i-need-to-generate-a-short-english-url-slug-for-the-blog-title-iku/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item></channel></rss>
