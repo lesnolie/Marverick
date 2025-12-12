@@ -1,9 +1,9 @@
 [submodule "Maverick"]
 	path = Maverick
-	url = https://github.com/AlanDecode/Maverick.git
+	url = https://github.com/lesnolie/Maverick.git
 [submodule "Galileo"]
 	path = Galileo
-	url = https://github.com/AlanDecode/Maverick-Theme-Galileo.git
+	url = https://github.com/lesnolie/Maverick-Theme-Galileo.git
 	branch = latest
 [submodule "Templates/Prism"]
 	path = Templates/Prism
