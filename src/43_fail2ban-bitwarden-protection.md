@@ -27,7 +27,7 @@ Fail2ban 是一个开源工具，通过监视应用程序日志并使用正则�
 ```
 apt install fail2ban
 ```
-[web:1]
+
 
 ## 配置前的准备
 
@@ -65,7 +65,7 @@ maxretry  = 3
 bantime   = 14400
 findtime  = 14400
 ```
-[web:1]
+
 
 如果实际监听端口不是 80 和 443，请相应修改 `port`，否则封禁规则不会作用在真实服务端口上。[web:1]
 
@@ -74,7 +74,7 @@ findtime  = 14400
 ```
 systemctl restart fail2ban
 ```
-[web:1]
+
 
 ## 测试配置
 
@@ -83,7 +83,7 @@ systemctl restart fail2ban
 ```
 fail2ban-client status bitwarden
 ```
-[web:1]
+
 
 当失败次数达到 3 次后，当前 IP 应被封禁，无法访问相应端口。[web:1]
 
