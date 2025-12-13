@@ -244,7 +244,7 @@ def generate_slug(issue_title):
             {"role": "system", "content": "Generate a short English URL slug for this blog title. Output ONLY the slug, nothing else. Use lowercase letters and hyphens only. Max 50 characters."},
             {"role": "user", "content": f"{issue_title}"}
         ]
-        output = run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", inputs)
+        output = run(@cf/meta/llama-4-scout-17b-16e-instruct", inputs)
         response_content = output['result']['response']
         slug = extract_slug_from_response(response_content)
         if slug:
@@ -292,7 +292,7 @@ Output ONLY valid JSON, no other text. Example:
 {"categories":["技术教程"],"tags":["网络","路由器"],"excerpt":"本文介绍..."}"""},
             {"role": "user", "content": f"标题：{title}\n\n内容：{content_preview}"}
         ]
-        output = run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", inputs)
+        output = run("@cf/meta/llama-4-scout-17b-16e-instruct", inputs)
         response = output['result']['response']
         if '</think>' in response:
             response = response.split('</think>')[-1]
