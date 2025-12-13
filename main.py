@@ -244,7 +244,7 @@ def generate_slug(issue_title):
             {"role": "system", "content": "Generate a short English URL slug for this blog title. Output ONLY the slug, nothing else. Use lowercase letters and hyphens only. Max 50 characters."},
             {"role": "user", "content": f"{issue_title}"}
         ]
-        output = run(@cf/meta/llama-4-scout-17b-16e-instruct", inputs)
+        output = run("@cf/meta/llama-4-scout-17b-16e-instruct", inputs)
         response_content = output['result']['response']
         slug = extract_slug_from_response(response_content)
         if slug:
