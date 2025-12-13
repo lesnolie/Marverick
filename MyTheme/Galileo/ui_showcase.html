@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Demo,UI,Showcase" />
+    <meta name="generator" content="Maverick 1.0" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="Maverick Demo &raquo; RSS 2.0" href="#" />
+    <link rel="alternate" type="application/atom+xml" title="Maverick Demo &raquo; ATOM 1.0" href="#" />
+    <link rel="stylesheet" href="./assets/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="./assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="./assets/katex.min.css">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "search.json"
+        }
+    </script>
+   
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Maverick Theme Demo</title>
+    <meta name="author" content="Maverick User" />
+    <meta name="description" content="A minimal static blog theme" />
+    <meta property="og:title" content="Maverick Theme Demo" />
+    <meta property="og:description" content="A minimal static blog theme" />
+    <meta property="og:site_name" content="Maverick Demo" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+
+    </head>
+    
+    <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+          <a href="./ui_showcase.html">
+            <img class="avatar" src="./logo.jpg" alt="">
+          </a>
+          <div class="site-title">
+            <a href="./ui_showcase.html"
+              >Maverick Demo</a
+            >
+          </div>
+          <p class="site-description">A minimal static blog theme</p>
+          <div class="social-container">
+            <a title="Twitter" href="#" target="_blank"
+              ><i class="ri-twitter-line"></i></a
+            ><a
+              title="Weibo"
+              href="#"
+              target="_blank"
+              ><i class="ri-weibo-line"></i></a
+            ><a title="Telegram" href="#" target="_blank"
+              ><i class="ri-telegram-line"></i></a
+            ><a
+              title="GitHub"
+              href="#"
+              target="_blank"
+              ><i class="ri-github-line"></i
+            ></a>
+
+            <a href="#" target="_self" class="search-form-input ga-highlight"
+              ><i class="ri-search-line"></i
+            ></a>
+          </div>
+        </div>
+            
+            
+        <div class="post-container">
+          <article class="post">
+                <a href="#">
+                  <h2 class="post-title">Welcome to Maverick</h2>
+                </a>
+                <div class="post-info">
+                  <span> 2025-12-13 </span>
+                </div>
+                
+                <a href="#">
+                  <h2 class="post-title">Exploring the Galileo Theme</h2>
+                </a>
+                <div class="post-info">
+                  <span> 2025-12-12 </span>
+                </div>
+
+                <a href="#">
+                  <h2 class="post-title">How to Customize Your Blog</h2>
+                </a>
+                <div class="post-info">
+                   <span> 2025-12-11 </span>
+                 </div>
+          </article>
+        </div>
+            
+        <div class="pagination-container">
+              <a
+                class="prev-page"
+                href="#"
+                >上一页</a
+              >
+              <a
+                class="next-page"
+                href="#"
+                >下一页</a
+              >
+          </div>
+           
+
+        
+        
+        <div class="site-footer">
+          · <a href="https://github.com/AlanDecode/Maverick">Maverick</a> ·
+          Mincho ·<a class="rss" href="#" target="_blank">
+          RSS
+        </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!--katex-->
+    <script defer src="./assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="./assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+    
+
+    <script src="./assets/ExSearch/jquery.min.js"></script>
+    <script src="./assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      (function () {
+        var domain = document.domain;
+        var els = document.getElementsByTagName('a');
+        for (var index = 0; index < els.length; index++) {
+          var element = els[index];
+          var target = element.getAttribute('target');
+          if (typeof target === 'undefined' || (target != '' && target != '_self')) {
+            if (element.hostname != domain) {
+              element.setAttribute('target', '_blank');
+            }
+          }
+        }
+      })(); 
+    });
+  </script>
+
+    </body>
+</html>

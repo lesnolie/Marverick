@@ -80,8 +80,24 @@ class Galileo(Template):
         if figcaption != "":
             figcaption = '<figcaption>%s</figcaption>' % figcaption
 
-        return '<figure %s %s><img loading="lazy" width="%s" height="%s" src="%s" />%s</figure>' \
-            % (style, attr, image['width'], image['height'], src, figcaption)
+        cls = 'pswp-item'
+
+        width = image['width']
+        height = image['height']
+
+        w_attr = ''
+        h_attr = ''
+        if width != -1:
+            w_attr = 'width="%s"' % width
+        if height != -1:
+            h_attr = 'height="%s"' % height
+
+        data_size = ''
+        if width != -1 and height != -1:
+            data_size = 'data-size="%sx%s"' % (width, height)
+
+        return '<figure class="%s" %s %s %s><img loading="lazy" %s %s src="%s" />%s</figure>' \
+            % (cls, style, attr, data_size, w_attr, h_attr, src, figcaption)
 
     def gather_meta(self):
         self._tags = set()
