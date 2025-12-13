@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -180,7 +180,7 @@
 <p>也正因如此，此次在海边，是真真切切的第一次和喜欢的人牵手漫步在海滩。</p>
 <p>青岛的沙滩和惠州的沙滩不一样，后来我和lxy总结出来的结果是，退潮了！</p>
 <p>当日还写了散文一篇，在此附上：</p>
-<p><figure style="flex: 66.66666666666667" ><img loading="lazy" width="1440" height="1080" src="/archives/assets/20520f950d7a6df298ea2954cc8f9625.jpg" /></figure></p>
+<p><figure class="pswp-item" style="flex: 66.66666666666667"  data-size="1440x1080"><img loading="lazy" width="1440" height="1080" src="/archives/assets/20520f950d7a6df298ea2954cc8f9625.jpg" /></figure></p>
 <blockquote><p>青岛的天气好舒服，或者说除了广东应该都这么舒服吧。
 犹记得那年成都的天气也这么舒服。
 与深圳相比，北方姑娘可太高了，一眼望去几乎1.6是平均身高。
@@ -216,7 +216,7 @@
 <li>改成自己的theme。</li>
 </ul>
 <p>总结下来就这三步。当然其中遇到了许许多多的问题，因为不懂python，不懂html，不懂css，所以当gitaction发生错误的时候，我是莫名其妙的，但是我会判断，我大概知道哪个位置有问题，于是乎我就在那个位置一点一点的修改。</p>
-<p><figure style="flex: 78.71125611745514" ><img loading="lazy" width="965" height="613" src="/archives/assets/639fc6d0418075fed08a67481cb864d3.png" /><figcaption>image-20210906110400732</figcaption></figure></p>
+<p><figure class="pswp-item" style="flex: 78.71125611745514"  data-size="965x613"><img loading="lazy" width="965" height="613" src="/archives/assets/639fc6d0418075fed08a67481cb864d3.png" /><figcaption>image-20210906110400732</figcaption></figure></p>
 <p>于是，这个博客就诞生了。</p>
 <p>这个博客的定位就是，日常。</p>
 <p>他不是笔记，他就像日记，是我情感抒发的地方，所以才不会给很多人看。</p>
@@ -360,6 +360,8 @@
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -379,8 +381,66 @@
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 

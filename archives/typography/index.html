@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -188,15 +188,15 @@
 <p>$$C_{m\times k}=A_{m\times n}\cdot B_{n\times k}$$</p>
 <h2>Figures</h2>
 <h3>Single figure</h3>
-<p><figure style="flex: 92.88888888888889" ><img loading="lazy" width="836" height="450" src="/archives/assets/e0affbc80ccb2d596c87b520e37e7071.jpg" /><figcaption>Princess Mononoke</figcaption></figure></p>
+<p><figure class="pswp-item" style="flex: 92.88888888888889"  data-size="836x450"><img loading="lazy" width="836" height="450" src="/archives/assets/e0affbc80ccb2d596c87b520e37e7071.jpg" /><figcaption>Princess Mononoke</figcaption></figure></p>
 <h3>Photoset</h3>
 <div class="photos">
-<figure style="flex: 75.0" ><img loading="lazy" width="4032" height="2688" src="/archives/assets/4956a144888cdbbb6c2df1d1d15384b0.jpeg" /></figure>
-<figure style="flex: 50.03720238095238" ><img loading="lazy" width="2690" height="2688" src="/archives/assets/4c66f0da616b08325b3aaa4c8b3f68e1.jpg" /></figure>
-<figure style="flex: 75.0" ><img loading="lazy" width="4032" height="2688" src="/archives/assets/8b4d2334469ffa39b59e6fdb37c8c601.jpeg" /></figure></div><div class="photos">
-<figure style="flex: 75.0" ><img loading="lazy" width="4032" height="2688" src="/archives/assets/0f5023d542a33e7c9d270f3cd6a99562.jpeg" /></figure>
-<figure style="flex: 75.0" ><img loading="lazy" width="4032" height="2688" src="/archives/assets/20ec69d2a0276336f95e11f42866d17f.jpeg" /></figure>
-<figure style="flex: 75.0" ><img loading="lazy" width="4032" height="2688" src="/archives/assets/2b8af25285e5a193729a350593113bad.jpeg" /></figure></div><h2>Table</h2>
+<figure class="pswp-item" style="flex: 75.0"  data-size="4032x2688"><img loading="lazy" width="4032" height="2688" src="/archives/assets/4956a144888cdbbb6c2df1d1d15384b0.jpeg" /></figure>
+<figure class="pswp-item" style="flex: 50.03720238095238"  data-size="2690x2688"><img loading="lazy" width="2690" height="2688" src="/archives/assets/4c66f0da616b08325b3aaa4c8b3f68e1.jpg" /></figure>
+<figure class="pswp-item" style="flex: 75.0"  data-size="4032x2688"><img loading="lazy" width="4032" height="2688" src="/archives/assets/8b4d2334469ffa39b59e6fdb37c8c601.jpeg" /></figure></div><div class="photos">
+<figure class="pswp-item" style="flex: 75.0"  data-size="4032x2688"><img loading="lazy" width="4032" height="2688" src="/archives/assets/0f5023d542a33e7c9d270f3cd6a99562.jpeg" /></figure>
+<figure class="pswp-item" style="flex: 75.0"  data-size="4032x2688"><img loading="lazy" width="4032" height="2688" src="/archives/assets/20ec69d2a0276336f95e11f42866d17f.jpeg" /></figure>
+<figure class="pswp-item" style="flex: 75.0"  data-size="4032x2688"><img loading="lazy" width="4032" height="2688" src="/archives/assets/2b8af25285e5a193729a350593113bad.jpeg" /></figure></div><h2>Table</h2>
 <table>
 <thead><tr>
 <th>header</th>
@@ -333,6 +333,8 @@
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -352,8 +354,66 @@
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 

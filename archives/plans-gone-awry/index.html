@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -139,7 +139,7 @@
             <div class="post-content pswp-gallery">
                 <p>事与愿违，这是去年我记得最清楚的一句话。</p>
 <p>与之相同的是日本某大学校长新生入学的演讲:恭喜你们，你们要进入努力也不一定有回报的成人世界了。</p>
-<p><figure style="flex: 55.762081784386616" ><img loading="lazy" width="600" height="538" src="https://user-images.githubusercontent.com/81410185/156892302-9e2acee6-6910-40ce-8d1b-bc8151058b07.jpeg" /><figcaption>image</figcaption></figure></p>
+<p><figure class="pswp-item" style="flex: 55.762081784386616"  data-size="600x538"><img loading="lazy" width="600" height="538" src="https://user-images.githubusercontent.com/81410185/156892302-9e2acee6-6910-40ce-8d1b-bc8151058b07.jpeg" /><figcaption>image</figcaption></figure></p>
 <p>士兵突击的班长曾说，生活就是一件事接着一件事，处理好了这件事，就要准备处理下件事。我对这句话体会特别深刻:
 1月份的物流，莫名其妙的多了仓储费，内点费，还多了莫名其妙的税金。并且物流公司也太不专业了，任何前提都不提醒。</p>
 <p>最终，导致货物因为缺货权重下降严重，在最需要货的时候没有货了。</p>
@@ -296,6 +296,8 @@ yihong0618说，为什么要内疚，要学会原谅自己。</p>
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -315,8 +317,66 @@ yihong0618说，为什么要内疚，要学会原谅自己。</p>
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 

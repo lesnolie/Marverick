@@ -911,6 +911,10 @@ video {
 
 .post-container .post .post-title {
   text-align: center;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
 }
 
 .post-container .post .post-info {
@@ -919,6 +923,101 @@ video {
 
 .post-detail .post .post-title {
   text-align: center;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
+}
+
+/* PhotoSwipe thumbnail strip (only enabled when pswp--has-thumbs is set) */
+.pswp.pswp--has-thumbs .pswp__scroll-wrap {
+  box-sizing: border-box;
+  padding-bottom: 74px;
+}
+
+.pswp__thumbnails {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10000;
+}
+
+.pswp__thumbnails.is-hidden {
+  display: none;
+}
+
+.pswp__thumb {
+  width: 52px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.08);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pswp__thumb.is-active {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* PhotoSwipe arrows: no blocks, just big arrows with strong outline (works on black/white images) */
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+  width: 90px;
+  height: 110px;
+  margin-top: -55px;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove PhotoSwipe default arrow sprites */
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  content: '';
+  background: none !important;
+}
+
+.pswp__button--arrow--left:after,
+.pswp__button--arrow--right:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  /* black outline/glow so it stays visible on both bright and dark photos */
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(0, 0, 0, 0.85),
+    0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.pswp__button--arrow--left:after {
+  content: '‹';
+}
+
+.pswp__button--arrow--right:after {
+  content: '›';
 }
 
 .post-detail .post .post-info {

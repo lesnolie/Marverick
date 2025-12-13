@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -144,7 +144,7 @@
 bash &lt;(curl -fsSL https://github.com/go-gost/gost/raw/master/install.sh) --install</code></pre>
 <blockquote><p>[!NOTE] 
 如果你是国内服务器，可以自己复制install.sh里面的代码到机器，然后添加自己的github加速地址
-<figure style="flex: 191.51785714285714" ><img loading="lazy" width="429" height="112" src="https://github.com/lesnolie/Marverick/assets/81410185/113c7666-e133-471c-9b93-732b8b7b41fc" /><figcaption>image</figcaption></figure></p>
+<figure class="pswp-item" style="flex: 191.51785714285714"  data-size="429x112"><img loading="lazy" width="429" height="112" src="https://github.com/lesnolie/Marverick/assets/81410185/113c7666-e133-471c-9b93-732b8b7b41fc" /><figcaption>image</figcaption></figure></p>
 </blockquote>
 <h2>利用systemd讲gost开机启动</h2>
 <p><strong>添加service文件</strong></p>
@@ -318,6 +318,8 @@ systemctl kill gost.service</code></pre>
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -337,8 +339,66 @@ systemctl kill gost.service</code></pre>
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 

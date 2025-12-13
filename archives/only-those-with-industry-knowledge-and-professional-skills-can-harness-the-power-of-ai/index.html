@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -139,7 +139,7 @@
             <div class="post-content pswp-gallery">
                 <p>**最近对SUNO的探究让我领悟到一个深刻的真理：</p>
 <h2>只有真正掌握了行业知识和专业技巧的人，才能充分利用AI的巨大能量。**</h2>
-<p><figure style="flex: 13.8671875" ><img loading="lazy" width="568" height="2048" src="https://github.com/lesnolie/Marverick/assets/81410185/c759e149-b7a4-4635-933d-055caa538ffe" /><figcaption>image</figcaption></figure></p>
+<p><figure class="pswp-item" style="flex: 13.8671875"  data-size="568x2048"><img loading="lazy" width="568" height="2048" src="https://github.com/lesnolie/Marverick/assets/81410185/c759e149-b7a4-4635-933d-055caa538ffe" /><figcaption>image</figcaption></figure></p>
 <p><a href="https://github.com/lesnolie/Marverick/issues/39">只有真正掌握了行业知识和专业技巧的人，才能充分利用AI的巨大能量。</a></p>
 
             </div>
@@ -266,6 +266,8 @@
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -285,8 +287,66 @@
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 

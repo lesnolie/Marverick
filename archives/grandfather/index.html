@@ -20,7 +20,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/0297a9ac9a7b7b768ca6f5f78d15e4ee.json"
+            api: "/cb9bc1f7308ecf64cc2d87a2c409be79.json"
         }
     </script>
    
@@ -137,7 +137,7 @@
         </div>
         <div class="post-content-wrapper">
             <div class="post-content pswp-gallery">
-                <p><figure style="flex: 66.67217995368839" ><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794267-9266c6ad-ee83-42ca-8ebd-e47d5db49256.jpeg" /><figcaption>image</figcaption></figure>
+                <p><figure class="pswp-item" style="flex: 66.67217995368839"  data-size="4031x3023"><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794267-9266c6ad-ee83-42ca-8ebd-e47d5db49256.jpeg" /><figcaption>image</figcaption></figure>
 外公于2022年4月16日去世，谨以此文纪念。</p>
 <hr>
 <p>我小时候是跟着外婆外公长大的，原因是爷爷去世的早，奶奶住在农村，爸爸为了生计在我两岁就去深圳打工挣钱。于是妈妈就带着我和外公住在城市内。<br>
@@ -147,8 +147,8 @@
 说到麻将，姥爷还是很喜欢打麻将的，身体不好却可以打麻将一下午，就是技术有一点糟糕。</p>
 <hr>
 <div class="photos">
-<figure style="flex: 37.5" ><img loading="lazy" width="3024" height="4032" src="https://user-images.githubusercontent.com/81410185/165794481-d7cc434e-27b8-4d7d-a171-b26f5b3f9d53.jpeg" /><figcaption>image</figcaption></figure>
-<figure style="flex: 66.67217995368839" ><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794574-cab6213c-5b73-45e4-bde7-f4f84ff2bdd4.jpeg" /><figcaption>image</figcaption></figure><figure style="flex: 66.67217995368839" ><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794653-74286a56-a357-482a-9571-db1262625036.jpeg" /><figcaption>image</figcaption></figure></div><hr>
+<figure class="pswp-item" style="flex: 37.5"  data-size="3024x4032"><img loading="lazy" width="3024" height="4032" src="https://user-images.githubusercontent.com/81410185/165794481-d7cc434e-27b8-4d7d-a171-b26f5b3f9d53.jpeg" /><figcaption>image</figcaption></figure>
+<figure class="pswp-item" style="flex: 66.67217995368839"  data-size="4031x3023"><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794574-cab6213c-5b73-45e4-bde7-f4f84ff2bdd4.jpeg" /><figcaption>image</figcaption></figure><figure class="pswp-item" style="flex: 66.67217995368839"  data-size="4031x3023"><img loading="lazy" width="4031" height="3023" src="https://user-images.githubusercontent.com/81410185/165794653-74286a56-a357-482a-9571-db1262625036.jpeg" /><figcaption>image</figcaption></figure></div><hr>
 <p>正是因为姥爷大部分时间独处的原因，与姥姥相比，对姥爷的情感就低了很多。姥爷走的那几天，我第一次体会到妈妈的悲伤。近几年我一直信奉一句话，哪个女孩不是家里的小公主。这两天突然意识到，这话也适用于妈妈，妈妈也是我姥爷的小公主。
 葬礼与我想象的略有不同，却与1988里德善奶奶去世时的状况十分相似。我们守灵的时候并没有一直悲伤，一直在哭，而也会找一些事情来打发时间。我也想过，这样会不会对姥爷不尊重，这样会不会不太好。可现实就是，悲伤是一刹那的，一瞬间的。就像洪水泛滥，一下子突破了防线，停不下来。<br>
 无论是悲伤，还是其他情感，大部分时间我们都会憋在心里，并且被其他现实的情感所掩埋。<br>
@@ -284,6 +284,8 @@
                 <div class="pswp__caption__center"></div>
             </div>
 
+            <div class="pswp__thumbnails" aria-hidden="true"></div>
+
         </div>
 
     </div>
@@ -303,8 +305,66 @@
                 return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         }
-        var pswp = new PhotoSwipe(document.querySelectorAll('.pswp')[0],
+        var pswpEl = document.querySelectorAll('.pswp')[0];
+        var pswp = new PhotoSwipe(pswpEl,
             PhotoSwipeUI_Default, gallery, options);
+
+        // Thumbnails: only show when there are multiple images
+        var thumbsEl = pswpEl ? pswpEl.querySelector('.pswp__thumbnails') : null;
+        var renderThumbs = function () {
+            if (!thumbsEl) return;
+
+            if (!gallery || gallery.length <= 1) {
+                thumbsEl.classList.add('is-hidden');
+                pswpEl.classList.remove('pswp--has-thumbs');
+                thumbsEl.innerHTML = '';
+                return;
+            }
+
+            thumbsEl.classList.remove('is-hidden');
+            pswpEl.classList.add('pswp--has-thumbs');
+            thumbsEl.innerHTML = '';
+
+            for (var i = 0; i < gallery.length; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pswp__thumb';
+                    btn.setAttribute('aria-label', 'Go to image ' + (idx + 1));
+                    btn.style.backgroundImage = 'url(' + gallery[idx].src + ')';
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        pswp.goTo(idx);
+                    });
+                    thumbsEl.appendChild(btn);
+                })(i);
+            }
+        };
+
+        var updateThumbActive = function () {
+            if (!thumbsEl) return;
+            var thumbs = thumbsEl.querySelectorAll('.pswp__thumb');
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i === pswp.getCurrentIndex()) {
+                    thumbs[i].classList.add('is-active');
+                    try { thumbs[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); } catch (e) {}
+                } else {
+                    thumbs[i].classList.remove('is-active');
+                }
+            }
+        };
+
+        pswp.listen('afterInit', function () {
+            renderThumbs();
+            updateThumbActive();
+        });
+        pswp.listen('beforeChange', function () {
+            updateThumbActive();
+        });
+        pswp.listen('close', function () {
+            if (thumbsEl) thumbsEl.innerHTML = '';
+            if (pswpEl) pswpEl.classList.remove('pswp--has-thumbs');
+        });
         pswp.init();
     };
 
