@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Sat, 13 Dec 2025 05:01:29 +0806</lastBuildDate><pubDate>Sat, 13 Dec 2025 05:01:29 +0806</pubDate><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>不愧不忘</title><link>/</link><description>我喜欢猫</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.jpg</url><title>不愧不忘</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Sat, 13 Dec 2025 05:08:06 +0806</lastBuildDate><pubDate>Sat, 13 Dec 2025 05:08:06 +0806</pubDate><item><title>这可能是我用过的最好用的背景去除工具——tools篇一：PIXIAN.AI</title><link>/archives/best-background-removal-tool-pixian-ai/</link><description>&lt;h2&gt;2024第一篇，2023年没有怎么发推，因为太懒了。2024估计也改不掉懒的毛病，但是我觉得还是需要把日常使用的工具记录一下，方便以后分享或者总结。也算是给自己开一个新篇章:tools篇&lt;/h2&gt;
 &lt;h2&gt;什么是背景去除工具&lt;/h2&gt;
 &lt;p&gt;背景去除工具，简单讲就是抠图。我个人常用场景是：网图只想使用其中的某个元素，之前只能通过PS一点一点抠图，为此还学了很多方法：什么蒙板、钢笔等等等等。现在，得益于AI的发展迅速，迭代了许许多多的抠图工具，今天我就要介绍一款我所使用过的最好用的工具：&lt;a href="https:pixian.ai"&gt;Pixian.ai&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure style="flex: 100.82256169212691" &gt;&lt;img loading="lazy" width="1716" height="851" src="https://github.com/lesnolie/Marverick/assets/81410185/44241a36-6ffe-4610-8e50-772fdba10b48" /&gt;&lt;figcaption&gt;image&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -585,13 +585,7 @@ git -c core.symlinks=true checkout .&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;p&gt;于是最开始那个问题就变成了另一种问法：&lt;strong&gt;与其担心 AI 会不会替代程序员，不如想想：在有了 AI 之后，你愿意成为哪一种「新角色」？&lt;/strong&gt;[web:9]&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/42"&gt;AI可以替代程序员吗&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ai-can-replace-programmers/</guid><pubDate>Tue, 25 Jun 2024 08:00:00 +0806</pubDate></item><item><title>ikuai恢复登录密码</title><link>/archives/think-okay-so-the-user-wants-me-to-generate-a-url-slug-for-their-blog-title-the-/</link><description>&lt;p&gt;爱快iKuai路由器忘记登录密码时，可通过控制台或APP恢复默认凭据，而无需完全重置设备。​&lt;/p&gt;
-&lt;p&gt;控制台恢复方法
-连接显示器（VGA/HDMI）和USB键盘到路由器，重启后进入中文控制台，按数字7选择恢复WEB管理密码，默认账号和密码均为admin。​
-若无显示器但有键盘，按Enter键多次后输入7并确认yes，即可恢复。​
-此方法适用于G系列机架网关和支持外接显示器的型号，保留原有配置。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/44"&gt;ikuai恢复登录密码&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/think-okay-so-the-user-wants-me-to-generate-a-url-slug-for-their-blog-title-the-/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item><item><title>尝试使用 Fail2ban 保护 Bitwarden</title><link>/archives/fail2ban-bitwarden-protection/</link><description>&lt;p&gt;原文链接：&lt;a href="https://blog.mrchi.cc/posts/tryout-fail2ban/"&gt;https://blog.mrchi.cc/posts/tryout-fail2ban/&lt;/a&gt;&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ai-can-replace-programmers/</guid><pubDate>Tue, 25 Jun 2024 08:00:00 +0806</pubDate></item><item><title>尝试使用 Fail2ban 保护 Bitwarden</title><link>/archives/fail2ban-bitwarden-protection/</link><description>&lt;p&gt;原文链接：&lt;a href="https://blog.mrchi.cc/posts/tryout-fail2ban/"&gt;https://blog.mrchi.cc/posts/tryout-fail2ban/&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;什么是 Fail2ban？&lt;/h2&gt;
 &lt;p&gt;Fail2ban 是一个开源工具，通过监视应用程序日志并使用正则表达式匹配，将多次登录失败的 IP 地址通过 iptables 规则进行封禁，用于防止暴力破解攻击，适合保护 Bitwarden 等密码管理器。&lt;/p&gt;
 &lt;h2&gt;安装 Fail2ban&lt;/h2&gt;
@@ -636,4 +630,10 @@ findtime  = 14400&lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code&gt;fail2ban-client set bitwarden unbanip &amp;lt;IP_ADDRESS&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/43"&gt;尝试使用 Fail2ban 保护 Bitwarden&lt;/a&gt;&lt;/p&gt;
-</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/fail2ban-bitwarden-protection/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item></channel></rss>
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/fail2ban-bitwarden-protection/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item><item><title>ikuai恢复登录密码</title><link>/archives/ikuai-recover-login-password/</link><description>&lt;p&gt;爱快iKuai路由器忘记登录密码时，可通过控制台或APP恢复默认凭据，而无需完全重置设备。​&lt;/p&gt;
+&lt;p&gt;控制台恢复方法
+连接显示器（VGA/HDMI）和USB键盘到路由器，重启后进入中文控制台，按数字7选择恢复WEB管理密码，默认账号和密码均为admin。​
+若无显示器但有键盘，按Enter键多次后输入7并确认yes，即可恢复。​
+此方法适用于G系列机架网关和支持外接显示器的型号，保留原有配置。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/lesnolie/Marverick/issues/44"&gt;ikuai恢复登录密码&lt;/a&gt;&lt;/p&gt;
+</description><author>lesliezhang08@gmail.com (Leslie)</author><guid isPermaLink="true">/archives/ikuai-recover-login-password/</guid><pubDate>Fri, 12 Dec 2025 08:00:00 +0806</pubDate></item></channel></rss>
